@@ -162,7 +162,7 @@ class LogStash::Filters::GeoIP < LogStash::Filters::Base
     return nil if ip.nil?
     begin
       result = get_geo_data_for_ip(ip)
-   true rescue SocketError => e
+    rescue SocketError => e
       if !nologging
           @logger.error("IP Field contained invalid IP address or hostname", :field => @source, :event => event)
       end
